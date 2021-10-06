@@ -1,0 +1,52 @@
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.8.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'idea'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+group = 'com.youtube'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//hibernate
+	implementation("org.hibernate:hibernate-core:5.2.9.Final")
+	implementation("org.hibernate:hibernate-entitymanager:5.2.9.Final")
+	implementation("org.hibernate:hibernate-validator:5.4.1.Final")
+	implementation("org.hibernate.common:hibernate-commons-annotations:5.0.1.Final")
+	implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
+	// Use MySQL Connector-J
+	//implementation 'mysql:mysql-connector-java'
+	runtimeOnly 'org.postgresql:postgresql'
+
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+test {
+	useJUnitPlatform()
+}
